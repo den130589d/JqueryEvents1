@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		div{
+			display: inline-block;
+			height: 100px;
+			text-align: center;
+		}
+		.menu{
+			width: 100%;
+			
+			
+		}
+		.subMenu{
+			background: #fff;
+			width: 24%;
+			border: 1px solid black;
+		
+		}
+		
+		.active{
+			background: black;
+			color: white;
+		}
+		.block1{
+			background: red;
+			width: 100%;
+		}
+		.block2{
+			background: green;
+			width: 100%;
+		}
+		.block3{
+			background: blue;
+			width: 100%;
+		}
+		.block4{
+			background: gray;
+			width: 100%;
+		}
+
+	</style>
+</head>
+<body>
+	<div class="menu">
+		<a href="#red">
+			<div class="subMenu">RED</div>
+		</a>
+		<a href="#green">
+			<div class="subMenu">GREEN</div>
+		</a>
+		<a href="#blue">
+			<div class="subMenu">BLUE</div>
+		</a>
+		<a href="#gray">
+			<div class="subMenu">GRAY</div>
+		</a>
+		
+
+
+	</div>
+		<div  class="block1">
+			<h1 id="red">RED</h1>
+			<p></p>
+		</div>
+		<div  class="block2">
+			<h2 id="green">GREEN</h2>
+			<p></p>
+		</div>
+		<div  class="block3">
+			<h3 id="blue">BLUE</h3>
+			<p></p>
+		</div>
+		<div  class="block4">
+			<h4 id="gray">GRAY</h4>
+			<p></p>
+		</div>
+		
+	
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+		<script>
+			var heightWindow = $(window).height();
+			$('.block1').css('height', heightWindow);
+			$('.block2').css('height', heightWindow);
+			$('.block3').css('height', heightWindow);
+			$('.block4').css('height', heightWindow);
+			$(window).on('scroll', function () {
+				
+				if($(this).scrollTop()>105){
+				$('.menu').css('position','fixed')
+			};
+				$(window).on('scroll', function(){
+					if($(this).scrollTop()<105){
+					$('.menu').css('position','static');
+				};
+			});
+			});	
+				
+			var bodyHeight = $('body').height();
+			var totalBlock = $('div').find('p').length;
+			var heightBlock = bodyHeight/totalBlock;
+		 
+			$(window).on('scroll', function(){
+				$('.subMenu').removeClass('active');
+
+
+				if($(this).scrollTop() < 950){
+					
+				$('a[href="#red"]').find('div').addClass('active')
+			};
+
+
+				if($(this).scrollTop() > 950 && $(this).scrollTop() < 1900){
+					
+				$('a[href="#green"]').find('div').addClass('active');
+			};
+
+
+
+
+			if($(this).scrollTop() > 1900 && $(this).scrollTop() < 2800){
+					
+				$('a[href="#blue"]').find('div').addClass('active');
+			};
+
+
+			if($(this).scrollTop() > 2801){
+				
+				$('a[href="#gray"]').find('div').addClass('active');
+			};
+
+
+
+
+
+			});
+			
+			
+		</script>
+</body>
+</html>
